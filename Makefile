@@ -5,7 +5,7 @@ PHP = docker-compose exec php php
 CONSOLE = docker-compose exec php php bin/console
 DOCKER_COMPOSE = docker-compose
 
-all: build up install
+all: build up install install-test
 
 build:
 	@echo "Building Docker containers..."
@@ -62,5 +62,13 @@ clean:
 	rm -rf var/log/*
 	rm -rf config/jwt/private.pem config/jwt/public.pem
 	$(DOCKER_COMPOSE) down -v --remove-orphans
+
+install-test:
+	$(CONSOLE) --env=test doctrine:database:create
+	$(CONSOLE) --env=test doctrine:schema:create
+	$(CONSOLE) --env=test doctrine:fixtures:load --no-interaction
+
+test:
+	$(PHP) ./vendor/bin/phpunit
 
 .PHONY: all build up down install install-dependencies setup-jwt generate-keys setup-database update-database start stop clean

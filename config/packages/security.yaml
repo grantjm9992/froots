@@ -35,7 +35,6 @@ security:
             entry_point: jwt
 
     access_control:
-        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/orders/\d+/products, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:

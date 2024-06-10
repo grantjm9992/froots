@@ -39,6 +39,6 @@ Of course, other standard methods of testing APIs are also possible.
 
 ### Suite Testing
 
-PHP Unit has been included in order to have some testing with a test suite. There is a command in the Makefile ```make test```` which will run all the tests for you directy.
+PHP Unit has been included in order to have some testing with a test suite. There is a command in the Makefile ````make test```` which will run all the tests for you directy.
 
 Alternatively you can run them from within the docker container if preferred.
